@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="CoverageCatcher" />
+    <meta name="keywords" content="CoverageCatcher" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CoverageCatcher</title>
+        <!-- Fevicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+        <!-- Start css -->
+    <link
+      href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css"
+      rel="stylesheet"
+    />
+    <link class="main-css" href="css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+    <!-- Custom Dropdown Template Start -->
+    <style>
+    </style>
+    <script>
+      function closeAllDropdowns() {
+        document.querySelectorAll('.custom-dropdown.open').forEach(function(dd) {
+          dd.classList.remove('open');
+        });
+      }
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.custom-dropdown')) {
+          closeAllDropdowns();
+        }
+      });
+      function selectCustomDropdownItem(item) {
+        var dropdown = item.closest('.custom-dropdown');
+        dropdown.querySelectorAll('.custom-dropdown-item').forEach(function(i) {
+          i.classList.remove('selected');
+        });
+        item.classList.add('selected');
+        dropdown.querySelector('.selected-label').textContent = item.textContent.trim();
+        dropdown.classList.remove('open');
+      }
+    </script>
+    <!-- Custom Dropdown Template End -->
+        <div id="preloader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div id="main-wrapper">
+            <script src="./vendor/global/global.min.js"></script>
+            <script src="./assets/js/jquery.min.js"></script>
+            <script src="./assets/js/bootstrap.min.js"></script>
+            <div class="nav-header">
+                <a href="/" class="brand-logo">
+          <img
+            class="logo-abbr"
+            src="./images/Coverage.png"
+            alt="CoverageBuddy"
+          />
+                </a>
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left">
+                <div class="dashboard_bar">Campaign URLs</div>
+                            </div>
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown notification_dropdown">
+                  <a
+                    class="nav-link bell dlab-theme-mode p-0"
+                    href="javascript:void(0);"
+                  >
+                                        <i id="icon-light" class="fas fa-sun"></i>
+                                        <i id="icon-dark" class="fas fa-moon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="/logout.php" role="button">
+                    <svg
+                      id="icon-logout1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="text-danger"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                            <polyline points="16 17 21 12 16 7"></polyline>
+                                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="dlabnav">
+                <div class="dlabnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li class="mm-active">
+              <a
+                class="has-arrow"
+                href="javascript:void(0);"
+                aria-expanded="false"
+              >
+                                <i class="flaticon-025-dashboard"></i>
+                                <span class="nav-text">Main</span>
+                            </a>
+                            <ul aria-expanded="true">
+                                <li>
+                                    <a href="./">
+                                        <i class="ri-dashboard-line"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./u2-campaigns.php">
+                                        <i class="ri-dashboard-line"></i>
+                                        <span>U2 Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./reporting.php">
+                                        <i class="ri-article-line"></i>
+                                        <span>Reporting</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./account.php">
+                                        <i class="ri-account-box-line"></i>
+                                        <span>Account Details</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./support.php">
+                                        <i class="ri-chat-smile-3-line"></i>
+                                        <span>Help & Support</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./tutorial.php">
+                                        <i class="ri-chat-smile-3-line"></i>
+                                        <span>Tutorial</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+              <a
+                class="has-arrow"
+                href="javascript:void(0);"
+                aria-expanded="false"
+              >
+                                <i class="flaticon-093-waving"></i>
+                                <span class="nav-text">Admin</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li>
+                                    <a href="./admin-campaigns.php">
+                                        <i class="ri-apps-line"></i>
+                                        <span>User Campaigns</span>
+                                        <!-- <i class="ri-arrow-right-s-line"></i> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./admin-users.php">
+                                        <i class="ri-pen-nib-line"></i>
+                                        <span>Users</span>
+                                        <!-- <i class="ri-arrow-right-s-line"></i> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./admin-domain-blacklist.php">
+                                        <i class="ri-bill-fill"></i>
+                                        <span>Domain Blacklist</span>
+                                        <!-- <i class="ri-arrow-right-s-line"></i> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./admin-star-publications.php">
+                                        <i class="ri-star-s-line"></i>
+                                        <span>Star Publications</span>
+                                        <!-- <i class="ri-arrow-right-s-line"></i> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./admin-project-stats.php">
+                                        <i class="ri-star-s-line"></i>
+                                        <span>Project Usage Stats</span>
+                                        <!-- <i class="ri-arrow-right-s-line"></i> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./admin-status.php">
+                                        <i class="ri-star-s-line"></i>
+                                        <span>Status</span>
+                                        <!-- <i class="ri-arrow-right-s-line"></i> -->
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="container-fluid">
+                    <div class="row page-titles">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">CoverageCatcher</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="javascript:void(0);">Campaign URLs</a>
+                            </li>
+                        </ol>
+                    </div>
+          <div class="campaign-actions-container">
+            <h3
+              class="campaign-actions-header text-lg font-semibold text-white mb-6"
+            >
+              Campaign Actions
+            </h3>
+            <div class="campaign-actions-grid">
+              <div>
+                <a
+                  href="./campaign-urls.php?id=97&coverageType=0"
+                  class="action-btn"
+                >
+                  See all articles we didn't find any coverage on
+                </a>
+                <div class="campaign-actions-desc">
+                  View articles where no backlinks or mentions were detected to
+                  identify missed coverage.
+                </div>
+              </div>
+              <div>
+                <a
+                  href="./campaign-urls.php?id=97&act=rerunmention"
+                  class="action-btn"
+                  onclick="return confirm('Are you sure you want to clear all mentions?');"
+                >
+                  Clear all mentions
+                </a>
+                <div class="campaign-actions-desc">
+                  This clears the mentions we found and just leaves coverage
+                  where a link was found.
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  class="action-btn upload-url"
+                  data-toggle="modal"
+                  data-target=".urls-modal"
+                >
+                  <img src="assets/svgs/upload-icon-red.svg" alt="upload" />
+                  Upload URLs Manually
+                </button>
+                <div class="campaign-actions-desc">
+                  Add campaign URLs directly by uploading list of URL's.
+                </div>
+              </div>
+              <div>
+                <a
+                  href="./campaign-urls.php?id=97&download=qualified"
+                  class="action-btn download-csv"
+                >
+                  <img src="assets/svgs/download-icon-red.svg" alt="download" />
+                  Download coverage CSV
+                </a>
+                <div class="campaign-actions-desc">
+                  Export confirmed coverage data showing only articles with
+                  verified backlinks.
+                </div>
+              </div>
+              <div>
+                <a
+                  href="./campaign-urls.php?id=97&download=all"
+                  class="action-btn download-csv"
+                >
+                  <img src="assets/svgs/download-icon-red.svg" alt="download" />
+                  Download coverage and mentions CSV
+                </a>
+                <div class="campaign-actions-desc">
+                  Export complete dataset including both confirmed coverage and
+                  detected mentions.
+                </div>
+              </div>
+            </div>
+          </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+              <div class="card campaign-urls-card">
+                <div class="card-header campaign-urls-card-header">
+                <h4 class="card-title">URLs</h4>
+                  <!-- <div class="text-right">
+                    <a
+                      href="./campaign-urls.php?id=97&download=qualified"
+                      class="btn btn-xs btn-primary"
+                      >Download coverage CSV</a
+                    >
+                    <a
+                      href="./campaign-urls.php?id=97&download=all"
+                      class="btn btn-xs btn-primary"
+                      >Download coverage and mentions CSV</a
+                    >
+                  </div> -->
+            </div>
+            <div class="card-body">
+                  <div class="campaign-urls-search">
+                    <div class="campaign-urls-search-input">
+                      <img src="assets/svgs/search-icon.svg" alt="search" />
+                      <input
+                        type="text"
+                        class="campaign-urls-search-input-field"
+                        name="search"
+                        placeholder="Search..."
+                      />
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <form action="" method="post">
+                      <table
+                        class="table table table-striped table-responsive-sm dataTablex"
+                        id="urlsTable"
+                        class="max-width:100%"
+                      >
+                            <thead>
+                          <tr class="campaign-urls-table-header">
+                            <th>Action</th>
+                            <th>Title / URL / Domain</th>
+                                    <th>Date</th>
+                            
+                            <th>Coverage </br>Type</th>
+                                    <th>Followed</th>
+                            <th>Link </br> Strength </th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="campaign-urls-table-row">
+                                    <td>
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                  <div class="table-action-trash">
+                                                <a href="/campaign-urls.php?id=97&idu=127025&act=del">
+                                      <span class="" title="delete">
+                                        <img src="assets/svgs/trash-icon-red.svg" alt="" class="trash-icon-img">
+                                                    </span>
+                                                </a>
+                                  </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                <p class="campaign-table-data-title">Gee and Ursula: New York disputes Seattle's No. 1 pizza...</p>
+                                <a class="campaign-table-data-link" href="https://mynorthwest.com/gee-and-ursula/new-york-disputes-seattles-1-pizza-ranking/3993473"
+                                    target="_blank">https://mynorthwest.com/gee-and-ursula/new-york-di...</a>
+                                <p class="campaign-table-data-site">mynorthwest.com</p>
+                                    </td>
+                            <td class="campaign-table-data-date">26/6/2025 20:40:28</td>
+                                    <td>
+                                        <span class="badge light badge-warning badge-warning-fit">Confirmed</span>
+                                    </td>
+                                    <td class='campaign-table-data-followed'>Yes</td>
+                            <td class="campaign-table-data-link-strength">50</td>
+                            <td>
+                              <div class="custom-dropdown" data-id="127025">
+                                <div class="custom-dropdown-selected" onclick="closeAllDropdowns(); this.parentNode.classList.toggle('open'); event.stopPropagation();">
+                                  <span class="selected-label">Report</span>
+                                </div>
+                                <div class="custom-dropdown-list">
+                                  <div class="custom-dropdown-item selected" data-value="2" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="1" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Star
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="0" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Unknown
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="3" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Dont report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="4" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Not correct
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                                    <td>
+                                        <div class="campaign-action-btns">
+
+                                            <div
+                                            class="table-action-btn light btn-xs editNote"
+                                            data-id="127025"
+                                            data-toggle="modal"
+                                            data-target=".note-modal"
+                                            >
+                                            <img src="assets/svgs/edit-icon-pencil-red.svg" alt="">
+                                        </div>
+                                        
+                                        <div
+                                        class="table-action-btn btn-xs editThumb"
+                                        data-id="127025"
+                                        data-toggle="modal"
+                                        data-target=".thumb-modal"
+                                        >
+                                        <img src="assets/svgs/edit-icon-image-red.svg" alt="">
+                                    </div>
+                                </div>
+                                    </td>
+                                </tr>
+                                <tr class="campaign-urls-table-row">
+                                    <td>
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                  <div class="table-action-trash">
+                                                <a href="/campaign-urls.php?id=97&idu=127025&act=del">
+                                      <span class="" title="delete">
+                                        <img src="assets/svgs/trash-icon-red.svg" alt="" class="trash-icon-img">
+                                                    </span>
+                                                </a>
+                                  </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                <p class="campaign-table-data-title">Gee and Ursula: New York disputes Seattle's No. 1 pizza...</p>
+                                <a class="campaign-table-data-link" href="https://mynorthwest.com/gee-and-ursula/new-york-disputes-seattles-1-pizza-ranking/3993473"
+                                    target="_blank">https://mynorthwest.com/gee-and-ursula/new-york-di...</a>
+                                <p class="campaign-table-data-site">mynorthwest.com</p>
+                                    </td>
+                            <td class="campaign-table-data-date">26/6/2025 20:40:28</td>
+                                    <td>
+                                        <span class="badge light badge-warning badge-warning-fit">Confirmed</span>
+                                    </td>
+                                    <td class='campaign-table-data-followed'>Yes</td>
+                            <td class="campaign-table-data-link-strength">50</td>
+                            <td>
+                              <div class="custom-dropdown" data-id="127025">
+                                <div class="custom-dropdown-selected" onclick="closeAllDropdowns(); this.parentNode.classList.toggle('open'); event.stopPropagation();">
+                                  <span class="selected-label">Report</span>
+                                </div>
+                                <div class="custom-dropdown-list">
+                                  <div class="custom-dropdown-item selected" data-value="2" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="1" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Star
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="0" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Unknown
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="3" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Dont report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="4" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Not correct
+                                  </div>
+                                </div>
+                              </div>
+                                    </td>
+                                    <td>
+                                        <div class="campaign-action-btns">
+
+                                            <div
+                                            class="table-action-btn light btn-xs editNote"
+                                            data-id="127025"
+                                            data-toggle="modal"
+                                            data-target=".note-modal"
+                                            >
+                                            <img src="assets/svgs/edit-icon-pencil-red.svg" alt="">
+                                        </div>
+                                        
+                                        <div
+                                        class="table-action-btn btn-xs editThumb"
+                                        data-id="127025"
+                                        data-toggle="modal"
+                                        data-target=".thumb-modal"
+                                        >
+                                        <img src="assets/svgs/edit-icon-image-red.svg" alt="">
+                                    </div>
+                                </div>
+                                    </td>
+                                </tr>
+                                <tr class="campaign-urls-table-row">
+                                    <td>
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                  <div class="table-action-trash">
+                                                <a href="/campaign-urls.php?id=97&idu=127025&act=del">
+                                      <span class="" title="delete">
+                                        <img src="assets/svgs/trash-icon-red.svg" alt="" class="trash-icon-img">
+                                                    </span>
+                                                </a>
+                                  </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                <p class="campaign-table-data-title">Gee and Ursula: New York disputes Seattle's No. 1 pizza...</p>
+                                <a class="campaign-table-data-link" href="https://mynorthwest.com/gee-and-ursula/new-york-disputes-seattles-1-pizza-ranking/3993473"
+                                    target="_blank">https://mynorthwest.com/gee-and-ursula/new-york-di...</a>
+                                <p class="campaign-table-data-site">mynorthwest.com</p>
+                                    </td>
+                            <td class="campaign-table-data-date">26/6/2025 20:40:28</td>
+                                    <td>
+                                        <span class="badge light badge-warning badge-warning-fit">Confirmed</span>
+                                    </td>
+                                    <td class='campaign-table-data-followed'>Yes</td>
+                            <td class="campaign-table-data-link-strength">50</td>
+                            <td>
+                              <div class="custom-dropdown" data-id="127025">
+                                <div class="custom-dropdown-selected" onclick="closeAllDropdowns(); this.parentNode.classList.toggle('open'); event.stopPropagation();">
+                                  <span class="selected-label">Report</span>
+                                </div>
+                                <div class="custom-dropdown-list">
+                                  <div class="custom-dropdown-item selected" data-value="2" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="1" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Star
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="0" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Unknown
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="3" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Dont report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="4" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Not correct
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                                    <td>
+                                        <div class="campaign-action-btns">
+
+                                            <div
+                                            class="table-action-btn light btn-xs editNote"
+                                            data-id="127025"
+                                            data-toggle="modal"
+                                            data-target=".note-modal"
+                                            >
+                                            <img src="assets/svgs/edit-icon-pencil-red.svg" alt="">
+                                        </div>
+                                        
+                                        <div
+                                        class="table-action-btn btn-xs editThumb"
+                                        data-id="127025"
+                                        data-toggle="modal"
+                                        data-target=".thumb-modal"
+                                        >
+                                        <img src="assets/svgs/edit-icon-image-red.svg" alt="">
+                                    </div>
+                                </div>
+                                    </td>
+                                </tr>
+                                <tr class="campaign-urls-table-row">
+                                    <td>
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                  <div class="table-action-trash">
+                                                <a href="/campaign-urls.php?id=97&idu=127025&act=del">
+                                      <span class="" title="delete">
+                                        <img src="assets/svgs/trash-icon-red.svg" alt="" class="trash-icon-img">
+                                                    </span>
+                                                </a>
+                                  </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                <p class="campaign-table-data-title">Gee and Ursula: New York disputes Seattle's No. 1 pizza...</p>
+                                <a class="campaign-table-data-link" href="https://mynorthwest.com/gee-and-ursula/new-york-disputes-seattles-1-pizza-ranking/3993473"
+                                    target="_blank">https://mynorthwest.com/gee-and-ursula/new-york-di...</a>
+                                <p class="campaign-table-data-site">mynorthwest.com</p>
+                                    </td>
+                            <td class="campaign-table-data-date">26/6/2025 20:40:28</td>
+                                    <td>
+                                        <span class="badge light badge-warning badge-warning-fit">Confirmed</span>
+                                    </td>
+                                    <td class='campaign-table-data-followed'>Yes</td>
+                            <td class="campaign-table-data-link-strength">50</td>
+                            <td>
+                              <div class="custom-dropdown" data-id="127025">
+                                <div class="custom-dropdown-selected" onclick="closeAllDropdowns(); this.parentNode.classList.toggle('open'); event.stopPropagation();">
+                                  <span class="selected-label">Report</span>
+                                </div>
+                                <div class="custom-dropdown-list">
+                                  <div class="custom-dropdown-item selected" data-value="2" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="1" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Star
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="0" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Unknown
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="3" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Dont report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="4" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Not correct
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                                    <td>
+                                        <div class="campaign-action-btns">
+
+                                            <div
+                                            class="table-action-btn light btn-xs editNote"
+                                            data-id="127025"
+                                            data-toggle="modal"
+                                            data-target=".note-modal"
+                                            >
+                                            <img src="assets/svgs/edit-icon-pencil-red.svg" alt="">
+                                        </div>
+                                        
+                                        <div
+                                        class="table-action-btn btn-xs editThumb"
+                                        data-id="127025"
+                                        data-toggle="modal"
+                                        data-target=".thumb-modal"
+                                        >
+                                        <img src="assets/svgs/edit-icon-image-red.svg" alt="">
+                                    </div>
+                                </div>
+                                    </td>
+                                </tr>
+                                <tr class="campaign-urls-table-row">
+                                    <td>
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                  <div class="table-action-trash">
+                                                <a href="/campaign-urls.php?id=97&idu=127025&act=del">
+                                      <span class="" title="delete">
+                                        <img src="assets/svgs/trash-icon-red.svg" alt="" class="trash-icon-img">
+                                                    </span>
+                                                </a>
+                                  </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                <p class="campaign-table-data-title">Gee and Ursula: New York disputes Seattle's No. 1 pizza...</p>
+                                <a class="campaign-table-data-link" href="https://mynorthwest.com/gee-and-ursula/new-york-disputes-seattles-1-pizza-ranking/3993473"
+                                    target="_blank">https://mynorthwest.com/gee-and-ursula/new-york-di...</a>
+                                <p class="campaign-table-data-site">mynorthwest.com</p>
+                                    </td>
+                            <td class="campaign-table-data-date">26/6/2025 20:40:28</td>
+                                    <td>
+                                        <span class="badge light badge-warning badge-warning-fit">Confirmed</span>
+                                    </td>
+                                    <td class='campaign-table-data-followed'>Yes</td>
+                            <td class="campaign-table-data-link-strength">50</td>
+                            <td>
+                              <div class="custom-dropdown" data-id="127025">
+                                <div class="custom-dropdown-selected" onclick="closeAllDropdowns(); this.parentNode.classList.toggle('open'); event.stopPropagation();">
+                                  <span class="selected-label">Report</span>
+                                </div>
+                                <div class="custom-dropdown-list">
+                                  <div class="custom-dropdown-item selected" data-value="2" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="1" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Star
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="0" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Unknown
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="3" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Dont report
+                                  </div>
+                                  <div class="custom-dropdown-item" data-value="4" onclick="selectCustomDropdownItem(this)">
+                                    <img src="assets/svgs/check.svg" class="checkmark" alt="selected">
+                                    Not correct
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                                    <td>
+                                        <div class="campaign-action-btns">
+
+                                            <div
+                                            class="table-action-btn light btn-xs editNote"
+                                            data-id="127025"
+                                            data-toggle="modal"
+                                            data-target=".note-modal"
+                                            >
+                                            <img src="assets/svgs/edit-icon-pencil-red.svg" alt="">
+                                        </div>
+                                        
+                                        <div
+                                        class="table-action-btn btn-xs editThumb"
+                                        data-id="127025"
+                                        data-toggle="modal"
+                                        data-target=".thumb-modal"
+                                        >
+                                        <img src="assets/svgs/edit-icon-image-red.svg" alt="">
+                                    </div>
+                                </div>
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <!--card-body -->
+        </div>
+        <!--card -->
+    </div>
+    <!--col-rlg-12 -->
+</div>
+<!--row -->
+</div>
+<!--container-fluid -->
+</div>
+<!---content-body -->
+<div class="modal fade note-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Note</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                data-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <textarea
+                name="note"
+                class="form-control"
+                maxlength="500"
+                rows="5"
+                placeholder="Enter note here..."
+              ></textarea>
+                <span id="the-count">500</span>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger light"
+                data-bs-dismiss="modal"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary saveNote">
+                Save Note
+              </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade urls-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload URLs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                data-dismiss="modal"
+              ></button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                <textarea
+                  name="urls"
+                  class="form-control"
+                  rows="5"
+                  placeholder="Enter urls here (One per line)..."
+                ></textarea>
+                </div>
+                <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger light"
+                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary saveUrls">
+                  Upload URLs
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade thumb-modal" id="basicModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Thumbnail</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                data-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <img src="" class="img-fluid" />
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">File upload</h5>
+                    </div>
+                    <div class="card-body">
+                  <input
+                    name="file"
+                    id="thumbChange"
+                    type="file"
+                    accept="image/png"
+                  />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger light"
+                data-bs-dismiss="modal"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary saveThumbnail">
+                Save thumbnail
+              </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $(".thumb-modal img").attr("src", e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+        $(document).ready(function () {
+          $("[name=clientStatus]").change(function () {
+            $.ajax({
+              type: "POST",
+                url: "./campaign-urls.php",
+                data: {
+                action: "changeStatus",
+                id: $(this).data("id"),
+                status: $(this).val(),
+                },
+                dataType: "json",
+              success: function (resultData) {
+                // console.log(resultData);
+              },
+            });
+        });
+
+          $(".editNote").click(function () {
+            var id = $(this).data("id");
+            $.ajax({
+              type: "POST",
+                url: "./campaign-urls.php",
+                data: {
+                action: "getNote",
+                id: id,
+                },
+                dataType: "json",
+              success: function (resultData) {
+                    console.log(resultData);
+                $("[name=note]").val(resultData.data);
+                $("[name=note]").data("id", id);
+                $(".note-modal").addClass("show").show();
+              },
+            });
+        });
+
+          $(".editThumb").click(function () {
+            var id = $(this).data("id");
+            $(".thumb-modal img").attr(
+              "src",
+              "/campaigns/1/97/" + id + ".png?t=" + Date.now()
+            );
+            $(".saveThumbnail").data("id", id);
+            $(".thumb-modal").addClass("show").show();
+          });
+
+          $("#thumbChange").change(function () {
+            readURL(this);
+        });
+
+          $(".saveThumbnail").click(function () {
+            var id = $(this).data("id");
+            $("#thumbForm input[name=id]").val(id);
+            $.ajax({
+                type: "POST",
+                url: "./campaign-urls.php",
+                crossDomain: true,
+              data: new FormData(document.getElementById("thumbForm")),
+                dataType: "json",
+                contentType: "multipart/form-data",
+                processData: false,
+                contentType: false,
+                headers: {
+                Accept: "application/json",
+              },
+            })
+              .done(function () {
+                $(".thumb-modal .close").click();
+              })
+              .fail(function () {
+                alert("An error occurred please try again later.");
+            });
+        });
+
+          $(".saveNote").click(function () {
+            var id = $(this).data("id");
+            $.ajax({
+              type: "POST",
+                url: "./campaign-urls.php",
+                data: {
+                action: "saveNote",
+                note: $("[name=note]").val(),
+                id: $("[name=note]").data("id"),
+                },
+                dataType: "json",
+              success: function (resultData) {
+                    console.log(resultData);
+                $(".note-modal .btn-close").click();
+              },
+            });
+        });
+          $("[name=search]").keyup(function () {
+            var sSearch = $("[name=search]").val();
+            if (sSearch.length > 1) {
+              $("#urlsTable tbody tr").each(function () {
+                if (
+                  $(this)
+                    .find("td:eq(1)")
+                    .text()
+                    .toLowerCase()
+                    .indexOf(sSearch.toLowerCase()) == -1
+                ) {
+                  $(this).addClass("d-none");
+                    }
+                });
+            } else {
+              $("#urlsTable tbody tr").removeClass("d-none");
+            }
+            return true;
+        });
+
+          $("textarea[name=note]").on("keyup", function () {
+            var characterCount = $(this).val().length,
+              maximum = $(this).attr("maxlength"),
+              theCount = $("#the-count");
+            theCount.text(maximum - characterCount);
+
+            if (characterCount >= maximum) {
+              theCount.addClass("text-danger");
+              theCount.css("font-weight", "bold");
+            } else {
+              theCount.removeClass("text-danger");
+              theCount.css("font-weight", "normal");
+            }
+        });
+    });
+</script>
+<div class="footer">
+    <div class="copyright">
+          <p>Copyright © CoverageBuddy <span class="current-year"></span></p>
+    </div>
+</div>
+    </div>
+    <script src="./vendor/global/global.min.js"></script>
+<script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="./vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script>
+<script src="./js/dashboard/cms.js"></script>
+<script src="./js/custom.min.js"></script>
+<script src="./js/dlabnav-init.js"></script>
+    <link
+      href="./vendor/datatables/css/jquery.dataTables.min.css"
+      rel="stylesheet"
+    />
+    <link href="vendor/datatables/responsive/responsive.css" rel="stylesheet" />
+<script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="./vendor/datatables/responsive/responsive.js"></script>
+<script>
+      $(document).ready(function () {
+        var table = $(".dataTable").DataTable({
+          aLengthMenu: [
+            [25, 50, 100, 200, -1],
+            [25, 50, 100, 200, "All"],
+          ],
+            iDisplayLength: -1,
+          ordering: false,
+          createdRow: function (row, data, index) {
+            // $(row).addClass('selected')
+            },
+            language: {
+                paginate: {
+                    next: '<i class="fa fa-angle-double-right" aria-hidden="true"></i>',
+              previous:
+                '<i class="fa fa-angle-double-left" aria-hidden="true"></i>',
+            },
+          },
+        });
+    });
+</script>
+<script>
+  function selectCustomDropdownItem(item) {
+    var dropdown = item.closest('.custom-dropdown');
+    dropdown.querySelectorAll('.custom-dropdown-item').forEach(function(i) {
+      i.classList.remove('selected');
+    });
+    item.classList.add('selected');
+    dropdown.querySelector('.selected-label').textContent = item.textContent.trim();
+    dropdown.classList.remove('open');
+    // Optionally, trigger AJAX or update hidden input for form submission here
+  }
+</script>
+  </body>
+</html>
